@@ -53,7 +53,8 @@ img{max-width:100%;height:auto;display:block}
 
 .hero{
   min-height:100vh;display:flex;flex-direction:column;
-  justify-content:flex-end;padding:0 48px 80px;
+  justify-content:flex-end;padding:120px 48px 80px;
+  overflow:visible;
 }
 .hero-label{
   font-size:14px;font-weight:400;letter-spacing:-0.3px;
@@ -278,14 +279,17 @@ section+section{border-top:1px solid var(--light)}
 }
 .footer strong{color:var(--dark)}
 
-[data-motion]{opacity:0;transform:translateY(24px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1)}
-[data-motion].in-view{opacity:1;transform:translateY(0)}
-.stagger>[data-motion]:nth-child(1){transition-delay:0s}
-.stagger>[data-motion]:nth-child(2){transition-delay:0.08s}
-.stagger>[data-motion]:nth-child(3){transition-delay:0.16s}
-.stagger>[data-motion]:nth-child(4){transition-delay:0.24s}
-.stagger>[data-motion]:nth-child(5){transition-delay:0.32s}
-.stagger>[data-motion]:nth-child(6){transition-delay:0.4s}
+[data-motion]{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:no-preference){
+  [data-motion]{opacity:0;transform:translateY(20px);transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1),transform 0.6s cubic-bezier(0.16,1,0.3,1)}
+  [data-motion].in-view{opacity:1;transform:translateY(0)}
+  .stagger>[data-motion]:nth-child(1){transition-delay:0s}
+  .stagger>[data-motion]:nth-child(2){transition-delay:0.06s}
+  .stagger>[data-motion]:nth-child(3){transition-delay:0.12s}
+  .stagger>[data-motion]:nth-child(4){transition-delay:0.18s}
+  .stagger>[data-motion]:nth-child(5){transition-delay:0.24s}
+  .stagger>[data-motion]:nth-child(6){transition-delay:0.3s}
+}
 
 @media(max-width:900px){
   .nav{padding:20px 24px}
@@ -703,8 +707,13 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) entry.target.classList.add('in-view');
   });
-}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.01, rootMargin: '200px 0px 0px 0px' });
 document.querySelectorAll('[data-motion]').forEach(el => observer.observe(el));
+
+// Fallback: reveal everything after 1.5s in case observer doesn't fire
+setTimeout(() => {
+  document.querySelectorAll('[data-motion]').forEach(el => el.classList.add('in-view'));
+}, 1500);
 
 function animateCounter(el, target) {
   let current = 0;
