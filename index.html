@@ -1,799 +1,1414 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
-<title>VA Accountability</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VA Performance &amp; Accountability Report - Stone Systems</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --black:#000;
-  --dark:#282828;
-  --mid:#666;
-  --light:#e8e8e8;
-  --white:#fff;
-  --red:#d62828;
-  --red-light:#fff0f0;
-}
-html{
-  scroll-behavior:smooth;
-  font-family:'Inter',-apple-system,system-ui,sans-serif;
-  color:var(--dark);
-  background:var(--white);
-  -webkit-font-smoothing:antialiased;
-}
-body{overflow-x:hidden}
-img{max-width:100%;height:auto;display:block}
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-.nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:28px 48px;
-  background:rgba(255,255,255,0.92);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
-}
-.nav-brand{
-  font-size:18px;font-weight:400;letter-spacing:-0.5px;
-  border:1.5px solid var(--black);border-radius:40px;
-  padding:8px 22px;color:var(--black);text-decoration:none;
-  transition:all 0.3s;
-}
-.nav-brand:hover{background:var(--black);color:var(--white)}
-.nav-links{display:flex;gap:8px;list-style:none}
-.nav-links a{
-  font-size:14px;font-weight:400;letter-spacing:-0.3px;
-  color:var(--dark);text-decoration:none;
-  border:1.5px solid var(--light);border-radius:40px;
-  padding:8px 18px;transition:all 0.25s;
-}
-.nav-links a:hover{border-color:var(--black);color:var(--black)}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-.hero{
-  min-height:100vh;display:flex;flex-direction:column;
-  justify-content:flex-end;padding:120px 48px 80px;
-  overflow:visible;
-}
-.hero-label{
-  font-size:14px;font-weight:400;letter-spacing:-0.3px;
-  color:var(--mid);margin-bottom:24px;
-}
-.hero h1{
-  font-size:clamp(56px,8vw,120px);font-weight:400;
-  letter-spacing:-5px;line-height:1;
-  color:var(--black);max-width:1100px;
-  margin-bottom:40px;
-}
-.hero h1 em{font-style:normal;color:var(--red)}
-.hero-desc{
-  font-size:18px;font-weight:300;letter-spacing:-0.3px;
-  color:var(--mid);max-width:540px;line-height:1.6;
-  margin-bottom:60px;
-}
-.hero-stats{
-  display:flex;gap:64px;
-  border-top:1px solid var(--light);padding-top:40px;
-}
-.hero-stat .num{
-  font-size:56px;font-weight:300;letter-spacing:-3px;
-  color:var(--black);line-height:1;
-}
-.hero-stat .lbl{
-  font-size:13px;color:var(--mid);margin-top:8px;
-  letter-spacing:-0.2px;
-}
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0a0a0f;
+    color: #e0e0e0;
+    line-height: 1.6;
+  }
 
-section{padding:120px 48px;position:relative}
-section+section{border-top:1px solid var(--light)}
-.tag{
-  font-size:14px;font-weight:400;color:var(--mid);
-  letter-spacing:-0.3px;margin-bottom:20px;
-}
-.tag::before{content:'#';color:var(--red)}
-.sec-title{
-  font-size:clamp(36px,5vw,64px);font-weight:400;
-  letter-spacing:-3px;line-height:1.1;
-  max-width:800px;margin-bottom:48px;
-  color:var(--black);
-}
+  /* ── HEADER ── */
+  .report-header {
+    background: linear-gradient(135deg, #1a0000 0%, #0a0a0f 50%, #0a0000 100%);
+    border-bottom: 3px solid #ff2222;
+    padding: 60px 40px 40px;
+    text-align: center;
+  }
+  .report-header h1 {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .report-header h1 span { color: #ff3333; }
+  .report-header .subtitle {
+    font-size: 0.95rem;
+    color: #888;
+    font-weight: 400;
+  }
+  .report-header .confidential {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 4px 16px;
+    background: rgba(255,0,0,0.15);
+    border: 1px solid rgba(255,0,0,0.3);
+    border-radius: 4px;
+    color: #ff4444;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
 
-.quote-block{
-  padding:48px 0;border-bottom:1px solid var(--light);
-}
-.quote-block:last-of-type{border-bottom:none}
-.quote-source{
-  font-size:12px;font-weight:500;text-transform:uppercase;
-  letter-spacing:1.5px;color:var(--red);margin-bottom:16px;
-}
-.quote-text{
-  font-size:clamp(24px,3vw,36px);font-weight:300;
-  letter-spacing:-1.5px;line-height:1.35;
-  color:var(--black);max-width:800px;
-  font-style:italic;
-}
-.quote-meta{
-  font-size:13px;color:var(--mid);margin-top:16px;
-}
+  /* ── LAYOUT ── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
 
-.evidence-full{
-  border:1px solid var(--light);border-radius:12px;
-  overflow:hidden;margin:32px 0;
-  transition:transform 0.3s,box-shadow 0.3s;
-}
-.evidence-full:hover{
-  transform:translateY(-2px);
-  box-shadow:0 16px 48px rgba(0,0,0,0.06);
-}
-.evidence-full img{width:100%;border-bottom:1px solid var(--light)}
-.evidence-full .cap{padding:24px 32px}
-.evidence-full .cap h4{font-size:16px;font-weight:500;letter-spacing:-0.3px;margin-bottom:6px}
-.evidence-full .cap p{font-size:14px;color:var(--mid);line-height:1.5}
-.evidence-full img{
-  transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);
-  cursor:zoom-in;
-}
-.evidence-full:hover img{transform:scale(1.02)}
+  /* ── STATS BAR ── */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .stat-card {
+    background: #111118;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+  }
+  .stat-card .number {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #ff3333;
+    line-height: 1;
+  }
+  .stat-card .label {
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
 
-.evidence-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:16px;margin:48px 0;
-}
-.evidence-card{
-  border:1px solid var(--light);border-radius:12px;
-  overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;
-}
-.evidence-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 20px 60px rgba(0,0,0,0.08);
-}
-.evidence-card img{
-  width:100%;object-fit:cover;
-  border-bottom:1px solid var(--light);
-  transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);
-  cursor:zoom-in;
-}
-.evidence-card:hover img{transform:scale(1.02)}
-.evidence-card .cap{padding:20px 24px}
-.evidence-card .cap h4{
-  font-size:15px;font-weight:500;letter-spacing:-0.3px;
-  margin-bottom:6px;color:var(--black);
-}
-.evidence-card .cap p{
-  font-size:13px;color:var(--mid);line-height:1.5;
-}
+  /* ── SECTIONS ── */
+  .section {
+    margin-bottom: 48px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #222;
+  }
+  .section-header .icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .section-header p {
+    font-size: 0.85rem;
+    color: #666;
+    margin-left: auto;
+  }
 
-.h-scroll-wrap{
-  overflow-x:auto;overflow-y:hidden;
-  scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;
-  margin:0 -48px;padding:0 48px 16px;
-}
-.h-scroll{
-  display:flex;gap:16px;
-}
-.h-scroll .evidence-card{
-  min-width:420px;max-width:420px;
-  scroll-snap-align:start;flex-shrink:0;
-}
+  /* ── CASE CARDS ── */
+  .case-card {
+    background: #111118;
+    border: 1px solid #222;
+    border-radius: 16px;
+    margin-bottom: 32px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .case-card:hover { border-color: #333; }
+  .case-card.critical { border-left: 4px solid #ff2222; }
+  .case-card.warning { border-left: 4px solid #ff8800; }
+  .case-card.systemic { border-left: 4px solid #ffcc00; }
+  .case-card.new { border-left: 4px solid #00ccff; }
 
-.patterns{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:16px;margin-top:48px;
-}
-.pattern{
-  border:1px solid var(--light);border-radius:12px;
-  padding:36px 32px;position:relative;
-  transition:border-color 0.3s,transform 0.3s;
-}
-.pattern:hover{border-color:var(--red);transform:translateY(-2px)}
-.pattern-num{
-  font-size:72px;font-weight:300;letter-spacing:-4px;
-  color:var(--light);line-height:1;margin-bottom:16px;
-}
-.pattern h3{
-  font-size:18px;font-weight:500;letter-spacing:-0.5px;
-  margin-bottom:12px;color:var(--black);
-}
-.pattern p{
-  font-size:14px;color:var(--mid);line-height:1.6;
-}
+  .case-header {
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid #1a1a22;
+  }
+  .case-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .critical .case-number { background: rgba(255,34,34,0.15); color: #ff4444; }
+  .warning .case-number { background: rgba(255,136,0,0.15); color: #ff8800; }
+  .systemic .case-number { background: rgba(255,204,0,0.15); color: #ffcc00; }
+  .new .case-number { background: rgba(0,204,255,0.15); color: #00ccff; }
 
-.case{
-  padding:48px 0;border-bottom:1px solid var(--light);
-  display:grid;grid-template-columns:280px 1fr;gap:48px;
-  align-items:start;
-}
-.case:last-of-type{border-bottom:none}
-.case-name{
-  font-size:24px;font-weight:500;letter-spacing:-1px;
-  color:var(--black);margin-bottom:12px;
-}
-.case-badge{
-  display:inline-block;font-size:11px;font-weight:600;
-  text-transform:uppercase;letter-spacing:1px;
-  padding:5px 12px;border-radius:40px;margin-bottom:16px;
-}
-.badge-lost{background:var(--red-light);color:var(--red);border:1px solid rgba(214,40,40,0.2)}
-.badge-esc{background:#fff8e1;color:#c77900;border:1px solid rgba(199,121,0,0.2)}
-.badge-sys{background:#e8f4fd;color:#0066cc;border:1px solid rgba(0,102,204,0.15)}
-.case-meta{font-size:13px;color:var(--mid);line-height:1.7}
-.case-meta strong{color:var(--dark)}
-.case-right p{
-  font-size:15px;color:var(--dark);line-height:1.7;
-  letter-spacing:-0.2px;margin-bottom:12px;
-}
-.case-right .inline-quote{
-  border-left:3px solid var(--red);
-  padding:12px 20px;margin:16px 0;
-  background:var(--red-light);border-radius:0 8px 8px 0;
-}
-.case-right .inline-quote p{
-  font-style:italic;color:var(--black);font-size:16px;margin-bottom:0;
-}
-.case-right .inline-quote .iq-src{
-  font-size:12px;color:var(--mid);font-style:normal;
-  margin-top:8px;display:block;
-}
+  .case-title h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .case-title .meta {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 2px;
+  }
+  .case-title .meta strong { color: #ff6666; font-weight: 600; }
 
-.transcript-item{
-  padding:32px 0;border-bottom:1px solid var(--light);
-}
-.transcript-item:last-child{border-bottom:none}
-.t-speaker{
-  font-size:12px;font-weight:600;text-transform:uppercase;
-  letter-spacing:1.5px;margin-bottom:10px;
-}
-.t-speaker.ceo{color:#c77900}
-.t-speaker.va-lead{color:#0066cc}
-.t-speaker.va{color:#7c3aed}
-.t-speaker.csm{color:#059669}
-.t-text{
-  font-size:18px;font-weight:300;letter-spacing:-0.5px;
-  line-height:1.6;font-style:italic;color:var(--black);
-  max-width:700px;
-}
+  .outcome-badge {
+    margin-left: auto;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+  }
+  .outcome-lost { background: rgba(255,34,34,0.15); color: #ff4444; border: 1px solid rgba(255,34,34,0.3); }
+  .outcome-escalated { background: rgba(255,136,0,0.15); color: #ff8800; border: 1px solid rgba(255,136,0,0.3); }
+  .outcome-systemic { background: rgba(255,204,0,0.15); color: #ffcc00; border: 1px solid rgba(255,204,0,0.3); }
+  .outcome-active { background: rgba(0,204,255,0.15); color: #00ccff; border: 1px solid rgba(0,204,255,0.3); }
+  .outcome-new { background: rgba(0,204,255,0.15); color: #00ccff; border: 1px solid rgba(0,204,255,0.3); }
 
-.rec{
-  display:flex;gap:24px;padding:32px 0;
-  border-bottom:1px solid var(--light);align-items:flex-start;
-}
-.rec:last-child{border-bottom:none}
-.rec-p{
-  font-size:12px;font-weight:600;padding:6px 12px;
-  border-radius:6px;white-space:nowrap;flex-shrink:0;
-}
-.rec-p.p1{background:var(--red-light);color:var(--red);border:1px solid rgba(214,40,40,0.2)}
-.rec-p.p2{background:#fff8e1;color:#c77900;border:1px solid rgba(199,121,0,0.2)}
-.rec-p.p3{background:#e8f4fd;color:#0066cc;border:1px solid rgba(0,102,204,0.15)}
-.rec h4{font-size:17px;font-weight:500;letter-spacing:-0.5px;margin-bottom:8px}
-.rec p{font-size:14px;color:var(--mid);line-height:1.6}
-.rec .owner{font-size:12px;color:var(--mid);margin-top:8px}
-.rec .owner strong{color:var(--dark)}
+  .new-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    background: rgba(0,204,255,0.2);
+    border: 1px solid rgba(0,204,255,0.4);
+    border-radius: 4px;
+    color: #00ccff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
 
-.footer{
-  padding:60px 48px;border-top:1px solid var(--light);
-  display:flex;justify-content:space-between;
-  font-size:14px;color:var(--mid);
-}
-.footer strong{color:var(--dark)}
+  .case-body { padding: 24px; }
 
-[data-motion]{opacity:1;transform:translateY(0)}
-@media(prefers-reduced-motion:no-preference){
-  [data-motion]{opacity:0;transform:translateY(20px);transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1),transform 0.6s cubic-bezier(0.16,1,0.3,1)}
-  [data-motion].in-view{opacity:1;transform:translateY(0)}
-  .stagger>[data-motion]:nth-child(1){transition-delay:0s}
-  .stagger>[data-motion]:nth-child(2){transition-delay:0.06s}
-  .stagger>[data-motion]:nth-child(3){transition-delay:0.12s}
-  .stagger>[data-motion]:nth-child(4){transition-delay:0.18s}
-  .stagger>[data-motion]:nth-child(5){transition-delay:0.24s}
-  .stagger>[data-motion]:nth-child(6){transition-delay:0.3s}
-}
+  .failure-detail {
+    background: rgba(255,34,34,0.05);
+    border: 1px solid rgba(255,34,34,0.15);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+  .failure-detail .label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ff4444;
+    margin-bottom: 6px;
+  }
+  .failure-detail p {
+    font-size: 0.9rem;
+    color: #ccc;
+    line-height: 1.7;
+  }
 
-@media(max-width:900px){
-  .nav{padding:20px 24px}
-  .nav-links{display:none}
-  .hero{padding:0 24px 60px}
-  section{padding:80px 24px}
-  .hero-stats{flex-wrap:wrap;gap:32px}
-  .patterns{grid-template-columns:1fr}
-  .case{grid-template-columns:1fr;gap:16px}
-  .evidence-grid{grid-template-columns:1fr}
-  .footer{flex-direction:column;gap:16px;padding:40px 24px}
-  .h-scroll-wrap{margin:0 -24px;padding:0 24px 16px}
-}
+  .impact-detail {
+    background: rgba(255,136,0,0.05);
+    border: 1px solid rgba(255,136,0,0.15);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+  .impact-detail .label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ff8800;
+    margin-bottom: 6px;
+  }
+  .impact-detail p {
+    font-size: 0.9rem;
+    color: #ccc;
+    line-height: 1.7;
+  }
+
+  /* ── EVIDENCE SCREENSHOTS ── */
+  .evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .evidence-item {
+    background: #0a0a10;
+    border: 1px solid #222;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .evidence-item .ev-label {
+    padding: 10px 14px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #4488ff;
+    background: rgba(68,136,255,0.08);
+    border-bottom: 1px solid #1a1a22;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .evidence-item img {
+    width: 100%;
+    display: block;
+  }
+  .evidence-item .ev-caption {
+    padding: 10px 14px;
+    font-size: 0.78rem;
+    color: #888;
+    border-top: 1px solid #1a1a22;
+    line-height: 1.5;
+  }
+  .evidence-placeholder {
+    padding: 40px 20px;
+    text-align: center;
+    color: #444;
+    font-size: 0.85rem;
+    font-style: italic;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255,255,255,0.02) 10px,
+      rgba(255,255,255,0.02) 20px
+    );
+  }
+
+  /* ── EMAIL QUOTE ── */
+  .email-quote {
+    background: #0d0d14;
+    border-left: 3px solid #ff3333;
+    border-radius: 0 10px 10px 0;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+  .email-quote .from {
+    font-size: 0.75rem;
+    color: #ff6666;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .email-quote .subject {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  .email-quote blockquote {
+    font-size: 0.95rem;
+    color: #ddd;
+    font-style: italic;
+    line-height: 1.7;
+  }
+  .email-quote blockquote .highlight {
+    background: rgba(255,34,34,0.15);
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: #ff6666;
+    font-weight: 600;
+  }
+
+  /* ── SLACK QUOTE ── */
+  .slack-quote {
+    background: #0d0d14;
+    border-left: 3px solid #4488ff;
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    margin: 12px 0;
+  }
+  .slack-msg {
+    margin-bottom: 12px;
+  }
+  .slack-msg:last-child { margin-bottom: 0; }
+  .slack-msg .name {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .slack-msg .name span {
+    font-weight: 400;
+    color: #555;
+    font-size: 0.7rem;
+    margin-left: 6px;
+  }
+  .slack-msg .text {
+    font-size: 0.88rem;
+    color: #ccc;
+    margin-top: 2px;
+    line-height: 1.5;
+  }
+
+  /* ── MEETING QUOTE ── */
+  .meeting-quote {
+    background: #0d0d14;
+    border-left: 3px solid #aa44ff;
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    margin: 12px 0;
+  }
+  .meeting-quote .source {
+    font-size: 0.7rem;
+    color: #aa66ff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .meeting-quote .speaker {
+    font-weight: 700;
+    color: #fff;
+  }
+  .meeting-quote p {
+    font-size: 0.88rem;
+    color: #ccc;
+    line-height: 1.6;
+    margin-top: 4px;
+  }
+
+  /* ── CSP TASK EVIDENCE ── */
+  .csp-task-card {
+    background: #0d0d14;
+    border: 1px solid #222;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 16px 0;
+  }
+  .csp-task-card .task-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .csp-task-card .task-name {
+    font-weight: 700;
+    color: #fff;
+    font-size: 0.95rem;
+  }
+  .csp-task-card .task-status {
+    margin-left: auto;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .status-done { background: #00aa44; color: #fff; }
+  .csp-task-card .task-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .csp-task-card .task-meta-item {
+    font-size: 0.78rem;
+    color: #888;
+  }
+  .csp-task-card .task-meta-item strong { color: #aaa; }
+  .csp-task-card .task-note {
+    background: rgba(255,255,255,0.03);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-top: 8px;
+    font-size: 0.82rem;
+    color: #999;
+  }
+  .csp-task-card .task-note .note-author {
+    font-weight: 600;
+    color: #ccc;
+  }
+  .csp-task-card .task-note .note-date {
+    color: #555;
+    font-size: 0.72rem;
+    margin-left: 8px;
+  }
+  .annotation {
+    color: #ff3333;
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    margin-top: 8px;
+    display: block;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    position: relative;
+    padding-left: 24px;
+    margin: 16px 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #222;
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 14px;
+    padding-left: 16px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -22px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ff3333;
+    border: 2px solid #0a0a0f;
+  }
+  .timeline-item .date {
+    font-size: 0.72rem;
+    color: #666;
+    font-weight: 600;
+  }
+  .timeline-item .event {
+    font-size: 0.88rem;
+    color: #ccc;
+    line-height: 1.5;
+  }
+
+  /* ── MEETING EVIDENCE TABLE ── */
+  .meeting-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+  }
+  .meeting-table th {
+    background: #16161e;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #888;
+    border-bottom: 2px solid #222;
+  }
+  .meeting-table td {
+    padding: 14px 16px;
+    font-size: 0.85rem;
+    color: #ccc;
+    border-bottom: 1px solid #1a1a22;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .meeting-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+  /* ── RECOMMENDATIONS ── */
+  .rec-card {
+    background: #111118;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .rec-priority {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .rec-p1 { background: rgba(255,34,34,0.15); color: #ff4444; border: 1px solid rgba(255,34,34,0.3); }
+  .rec-p2 { background: rgba(255,136,0,0.15); color: #ff8800; border: 1px solid rgba(255,136,0,0.3); }
+  .rec-p3 { background: rgba(0,170,68,0.15); color: #00aa44; border: 1px solid rgba(0,170,68,0.3); }
+  .rec-content h4 { font-size: 0.95rem; color: #fff; margin-bottom: 4px; }
+  .rec-content p { font-size: 0.85rem; color: #999; line-height: 1.6; }
+  .rec-content .owner { font-size: 0.75rem; color: #666; margin-top: 6px; }
+
+  /* ── FOOTER ── */
+  .report-footer {
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid #1a1a22;
+    color: #444;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 768px) {
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .evidence-grid { grid-template-columns: 1fr; }
+    .report-header h1 { font-size: 1.6rem; }
+    .container { padding: 24px 16px; }
+  }
+
+  @media print {
+    body { background: #fff; color: #111; }
+    .case-card, .evidence-item, .stat-card, .rec-card { border-color: #ddd; background: #fafafa; }
+    .report-header { background: #111; }
+  }
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <a href="#" class="nav-brand">StoneSystems</a>
-  <ul class="nav-links">
-    <li><a href="#admissions">Admissions</a></li>
-    <li><a href="#patterns">Patterns</a></li>
-    <li><a href="#cases">Cases</a></li>
-    <li><a href="#evidence">Evidence</a></li>
-    <li><a href="#transcript">On Record</a></li>
-    <li><a href="#fixes">Fixes</a></li>
-  </ul>
-</nav>
+<!-- ════════════════ HEADER ════════════════ -->
+<div class="report-header">
+  <h1>VA Performance &amp; <span>Accountability Report</span></h1>
+  <div class="subtitle">Prepared by Ryan Grant, CSM Team Lead | December 2025 - April 2026 | For Michael Vanhoutte &amp; Eric Shirk</div>
+  <div class="confidential">Confidential - Internal Use Only</div>
+</div>
 
-<div class="hero">
-  <p class="hero-label" data-motion>Confidential Report / March 2026</p>
-  <h1 data-motion>VA Performance &amp; <em>Accountability</em></h1>
-  <p class="hero-desc" data-motion>
-    A documented case of systemic VA work failures directly causing client churn.
-    Prepared for Michael Vanhoutte and Eric Shirk.
+<div class="container">
+
+<!-- ════════════════ STATS ════════════════ -->
+<div class="stats-bar">
+  <div class="stat-card">
+    <div class="number">8+</div>
+    <div class="label">Clients Lost to VA Failures</div>
+  </div>
+  <div class="stat-card">
+    <div class="number">16</div>
+    <div class="label">Documented Incidents</div>
+  </div>
+  <div class="stat-card">
+    <div class="number">5</div>
+    <div class="label">Months This Has Persisted</div>
+  </div>
+  <div class="stat-card">
+    <div class="number">7</div>
+    <div class="label">Failure Patterns Identified</div>
+  </div>
+</div>
+
+<!-- ════════════════ PURPOSE ════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="icon" style="background: rgba(68,136,255,0.15); color: #4488ff;">i</div>
+    <h2>Purpose</h2>
+  </div>
+  <p style="font-size: 0.95rem; color: #aaa; line-height: 1.8; max-width: 900px;">
+    This report documents specific, evidence-backed cases where VA work was not completed, completed incorrectly, or marked as "Done" without actually being finished - resulting in direct client churn. Each case includes evidence from the CS Platform, Gmail, Slack, and Fathom call recordings. VAs are identified by name where known. The goal is to identify systemic patterns and implement process fixes to stop preventable client losses. Cases are ordered from most recent to earliest.
   </p>
-  <div class="hero-stats stagger">
-    <div class="hero-stat" data-motion>
-      <div class="num">12</div>
-      <div class="lbl">Documented cases</div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- ═══════════ DOCUMENTED CASES ═════════════ -->
+<!-- ════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="icon" style="background: rgba(255,34,34,0.15); color: #ff3333;">!</div>
+    <h2>Documented Cases</h2>
+    <p>Sorted most recent to earliest</p>
+  </div>
+
+  <!-- ════════ CASE 1: HOME SUITE INC (NEW) ════════ -->
+  <div class="case-card new">
+    <div class="case-header">
+      <div class="case-number">1</div>
+      <div class="case-title">
+        <h3>Home Suite Inc + 2 Other Sites - Broken Legal Pages <span class="new-badge">New - Apr 2</span></h3>
+        <div class="meta">VA: <strong>Unattributed</strong> (website builders) | April 2, 2026</div>
+      </div>
+      <div class="outcome-badge outcome-active">Active - 3rd Repeat</div>
     </div>
-    <div class="hero-stat" data-motion>
-      <div class="num">7</div>
-      <div class="lbl">Clients lost</div>
+    <div class="case-body">
+      <div class="failure-detail">
+        <div class="label">What the VA Did</div>
+        <p>Privacy Policy and Terms &amp; Conditions pages were built on homesuiteinc.com but the <strong>hyperlinks were never configured</strong>. Clicking either link does nothing - null functionality. Oscar Corral confirmed: "the pages are made just the routing isn't setup." This is the <strong>3rd consecutive website</strong> with the exact same broken pattern. The VA built the pages but did not complete the wiring. No QA was performed before marking the work done.</p>
+      </div>
+
+      <div class="slack-quote">
+        <div class="slack-msg">
+          <div class="name">Michael Scott <span>8:59 AM - Apr 2, 2026</span></div>
+          <div class="text">"https://homesuiteinc.com/ Can someone triple check for me... click on privacy policy and terms and conditions for me and confirm that nothing pops up. this is the 3rd straight site that has the same null functionality"</div>
+        </div>
+      </div>
+      <div class="slack-quote">
+        <div class="slack-msg">
+          <div class="name">Oscar Corral <span>9:02 AM</span></div>
+          <div class="text">"That is correct bro they did not setup the hyper links for the pages. from what ive seen the pages are made just the routing isnt setup. so you can just publish the website and copy the URL and reconfigure the hyper link and it willl be fixe d"</div>
+        </div>
+      </div>
+      <div class="slack-quote">
+        <div class="slack-msg">
+          <div class="name">Michael Scott <span>9:07 AM</span></div>
+          <div class="text">"VAs need to finish the job. Not 69% not 92% so yeah create a task. maybe they will change the habit"</div>
+        </div>
+      </div>
+
+      <div class="impact-detail">
+        <div class="label">The Pattern This Reveals</div>
+        <p>This is not a one-off. <strong>Three consecutive websites shipped with the exact same defect.</strong> The VA who built site #1 didn't learn from the mistake. The VA who built site #2 repeated it. The VA who built site #3 repeated it again. There is no checklist step for "click your legal links and verify they work." Michael's quote says it all: "Not 69%. Not 92%." The job is being delivered partially complete, repeatedly, with no feedback loop correcting the behavior.</p>
+      </div>
+
+      <div class="evidence-grid">
+        <div class="evidence-item">
+          <div class="ev-label">Screenshot: Slack Conversation</div>
+          <img src="evidence/homesuite-slack-michael.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Slack conversation">
+          <div class="evidence-placeholder" style="display:none;">Save Slack screenshot as:<br><code>evidence/homesuite-slack-michael.png</code></div>
+          <div class="ev-caption">Michael Scott flagging the 3rd consecutive site with broken Privacy Policy / Terms links. Oscar confirms VAs didn't set up routing.</div>
+        </div>
+        <div class="evidence-item">
+          <div class="ev-label">Screenshot: Home Suite Website</div>
+          <img src="evidence/homesuite-website.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Home Suite website">
+          <div class="evidence-placeholder" style="display:none;">Save website screenshot as:<br><code>evidence/homesuite-website.png</code></div>
+          <div class="ev-caption">homesuiteinc.com showing the form with non-functional Terms &amp; Conditions and Privacy Policy links at the bottom.</div>
+        </div>
+      </div>
     </div>
-    <div class="hero-stat" data-motion>
-      <div class="num">6</div>
-      <div class="lbl">Failure patterns</div>
+  </div>
+
+  <!-- ════════ CASE 2: J KERN CONSTRUCTION GBP (NEW) ════════ -->
+  <div class="case-card new">
+    <div class="case-header">
+      <div class="case-number">2</div>
+      <div class="case-title">
+        <h3>J Kern Construction - GBP Marked Complete, Not Optimized <span class="new-badge">New - Apr 1</span></h3>
+        <div class="meta">VA: <strong>Unattributed</strong> (GBP setup) | April 1, 2026</div>
+      </div>
+      <div class="outcome-badge outcome-active">Active - Incomplete</div>
     </div>
-    <div class="hero-stat" data-motion>
-      <div class="num">3</div>
-      <div class="lbl">VAs named on record</div>
+    <div class="case-body">
+      <div class="failure-detail">
+        <div class="label">What the VA Did</div>
+        <p>The GBP optimization task for J Kern Construction, LLC was <strong>marked as complete</strong>. However, the profile has: only <strong>1 Google review</strong>, only <strong>1 Google post</strong> (from Mar 2, 2026), <strong>no photos uploaded</strong>, and minimal optimization. Charlie Nyreen caught this during a routine check and flagged it: "it doesn't have pics, nada... but the task is marked complete."</p>
+      </div>
+
+      <div class="slack-quote">
+        <div class="slack-msg">
+          <div class="name">Charlie Nyreen <span>11:19 AM - Apr 1, 2026</span></div>
+          <div class="text">"is this account optimized for you?"</div>
+        </div>
+        <div class="slack-msg">
+          <div class="name">Charlie Nyreen</div>
+          <div class="text">"it doesn't have pics, nada..."</div>
+        </div>
+        <div class="slack-msg">
+          <div class="name">Charlie Nyreen</div>
+          <div class="text">"but the task is marked complete"</div>
+        </div>
+      </div>
+
+      <div class="impact-detail">
+        <div class="label">The Pattern This Reveals</div>
+        <p>This is the same pattern from the March 18 meeting: tasks marked "Done" without the work being finished. A GBP profile with no photos and 1 post is not optimized. This is precisely what Oriana admitted to - tasks closed to hit KPIs, not because the deliverable is actually complete. If a CSM checks the task status and sees "Done," they'll tell the client the GBP is set up. Then the client Googles themselves and sees a bare profile.</p>
+      </div>
+
+      <div class="evidence-grid">
+        <div class="evidence-item">
+          <div class="ev-label">Screenshot: J Kern GBP Profile</div>
+          <img src="evidence/jkern-gbp.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="J Kern GBP">
+          <div class="evidence-placeholder" style="display:none;">Save GBP screenshot as:<br><code>evidence/jkern-gbp.png</code></div>
+          <div class="ev-caption">J Kern Construction GBP - 5.0 stars with only 1 review, 1 post, no photos. Task was marked complete.</div>
+        </div>
+        <div class="evidence-item">
+          <div class="ev-label">Screenshot: Charlie's Slack Callout</div>
+          <img src="evidence/jkern-charlie-slack.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Charlie Slack">
+          <div class="evidence-placeholder" style="display:none;">Save Slack screenshot as:<br><code>evidence/jkern-charlie-slack.png</code></div>
+          <div class="ev-caption">Charlie Nyreen calling out the GBP as not optimized despite task being marked complete.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ CASE 3: PRECISION CARPENTRY (NEW) ════════ -->
+  <div class="case-card new">
+    <div class="case-header">
+      <div class="case-number">3</div>
+      <div class="case-title">
+        <h3>Precision Carpentry - Dark Text on Dark Background <span class="new-badge">New - Mar 26</span></h3>
+        <div class="meta">VA: <strong>Unattributed</strong> (website builder) | March 26, 2026</div>
+      </div>
+      <div class="outcome-badge outcome-active">Active - Quality Failure</div>
+    </div>
+    <div class="case-body">
+      <div class="failure-detail">
+        <div class="label">What the VA Did</div>
+        <p>The client website for Precision Carpentry was built with <strong>dark-colored text on a dark-colored background</strong>, making the content unreadable. Charlie Nyreen flagged it: "dark letter on a dark backdrop." This is a basic visual QA failure - the VA either didn't preview the page after building it, or previewed it and shipped it anyway. A 5-second visual check would have caught this.</p>
+      </div>
+
+      <div class="slack-quote">
+        <div class="slack-msg">
+          <div class="name">Charlie Nyreen <span>Mar 26, 2026</span></div>
+          <div class="text">"Precision Carpentry - dark letter on a dark backdrop"</div>
+        </div>
+      </div>
+
+      <div class="impact-detail">
+        <div class="label">Client Impact</div>
+        <p>The client's website is live with unreadable content. Potential customers visiting the site can't read the service descriptions. This directly impacts lead generation and makes the client's business look unprofessional. This is the exact type of failure Kai Stone addressed on March 18: "you have to proof check the website."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ CASE 4: CROSS COUNTRY (existing, was #1) ════════ -->
+  <div class="case-card critical">
+    <div class="case-header">
+      <div class="case-number">4</div>
+      <div class="case-title">
+        <h3>Cross Country Mechanical - Shannon Liccion</h3>
+        <div class="meta">VA: <strong>Camila Salamanca</strong> (task assigned) then <strong>Oriana Quinones</strong> (escalated) | Jan 6 - Mar 23, 2026</div>
+      </div>
+      <div class="outcome-badge outcome-lost">Client Lost</div>
+    </div>
+    <div class="case-body">
+      <div class="failure-detail">
+        <div class="label">What the VA Did</div>
+        <p>The task was created January 6 with clear instructions: <strong>"Please update the logo."</strong> Camila Salamanca marked the task as <strong>Done at 100% progress</strong> without changing the logo. Camila herself then posted a note in the task escalating to Oriana Quinones: "the logo please, it still needs to be updated." Oriana never completed it. The task remained at "Done" status while the logo was never changed.</p>
+      </div>
+
+      <div class="csp-task-card">
+        <div class="task-header">
+          <div class="task-name">Website Revision - Cross Country Mechanical</div>
+          <div class="task-status status-done">Done</div>
+        </div>
+        <div class="task-meta">
+          <div class="task-meta-item"><strong>Assignee:</strong> Camila Salamanca</div>
+          <div class="task-meta-item"><strong>CSM:</strong> Ryan Grant</div>
+          <div class="task-meta-item"><strong>Priority:</strong> Urgent</div>
+          <div class="task-meta-item"><strong>Progress:</strong> 100%</div>
+          <div class="task-meta-item"><strong>Start:</strong> Jan 6, 2026</div>
+          <div class="task-meta-item"><strong>Due:</strong> Jan 7, 2026</div>
+        </div>
+        <div style="font-size:0.82rem; color:#aaa; margin-bottom:8px;"><strong>Task Instructions:</strong> "Please update the logo" + Fix the Business Address (Very Important)</div>
+        <div class="task-note">
+          <span class="note-author">Camila Salamanca</span><span class="note-date">~3 months ago</span><br>
+          "@Ryan Christmas the task is done"
+          <span class="annotation">Task marked done. Logo was NOT updated.</span>
+        </div>
+        <div class="task-note">
+          <span class="note-author">Camila Salamanca</span><span class="note-date">~2 months ago</span><br>
+          "@Oriana Quinones the logo please. it still needs to be updated. there's an attachment below. thank you for helping!"
+          <span class="annotation">Camila admits the logo still needs updating - AFTER she already closed the task.</span>
+        </div>
+      </div>
+
+      <div class="impact-detail">
+        <div class="label">Client Impact</div>
+        <p>Shannon Liccion asked multiple times to have the logo fixed. After months of inaction, she sent this email on March 23, 2026:</p>
+      </div>
+
+      <div class="email-quote">
+        <div class="from">Shannon Liccion &lt;shannon@crosscountrymechanical.net&gt;</div>
+        <div class="subject">Subject: Cancel Cancel Cancel | Mar 23, 2026</div>
+        <blockquote>
+          "As I said and sent last month and you still took money out I want to cancel with y'all. I took our reviews off your site in which we haven't had any reviews in several months... Please cancel my account with Stone Systems as I have no confidence in your program anymore and have given it 6 months. <span class="highlight">And on top of that have ask y'all several times to change the logo on my website and still never got changed.</span>"
+        </blockquote>
+      </div>
+
+      <div class="evidence-grid">
+        <div class="evidence-item">
+          <div class="ev-label">Screenshot: CS Platform Task</div>
+          <img src="evidence/cross-country-csp-task.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="CSP Task Screenshot">
+          <div class="evidence-placeholder" style="display:none;">Save CSP task screenshot as:<br><code>evidence/cross-country-csp-task.png</code></div>
+          <div class="ev-caption">CS Platform showing task marked "Done" at 100% with notes proving logo was never fixed. Camila closed it, then asked Oriana to fix it.</div>
+        </div>
+        <div class="evidence-item">
+          <div class="ev-label">Screenshot: Cancel Email</div>
+          <img src="evidence/cross-country-cancel-email.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Cancel Email Screenshot">
+          <div class="evidence-placeholder" style="display:none;">Save cancel email screenshot as:<br><code>evidence/cross-country-cancel-email.png</code></div>
+          <div class="ev-caption">Shannon Liccion's "Cancel Cancel Cancel" email specifically citing the logo that was never changed.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ CASE 5: ROOFS BY RECON ════════ -->
+  <div class="case-card critical">
+    <div class="case-header">
+      <div class="case-number">5</div>
+      <div class="case-title">
+        <h3>Roofs by Recon - Austin Schroeder</h3>
+        <div class="meta">VA: <strong>Unattributed</strong> (website builder) | Feb 24 - Mar 2, 2026</div>
+      </div>
+      <div class="outcome-badge outcome-lost">Client Lost</div>
+    </div>
+    <div class="case-body">
+      <div class="failure-detail">
+        <div class="label">What the VA Did</div>
+        <p>Website formatting issues were reported by the client on Feb 24 (About Us section broken, mobile layout issues). The VA assigned to revisions took <strong>over 2 weeks</strong> on simple changes. The GHL payment system was never activated. The website quality was so poor that Austin figured out the entire company was run by VAs and felt deceived.</p>
+      </div>
+      <div class="impact-detail">
+        <div class="label">Client Impact</div>
+        <p>Austin Schroeder sent <strong>5+ emails in 30 minutes</strong> on March 2nd. Threatened lawyer, threatened bank chargeback, demanded to speak to the owner.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="date">Feb 24</div>
+          <div class="event">Austin reports formatting issues. Ryan passes to VA.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="date">Feb 25</div>
+          <div class="event">Austin follows up: "????" - no response.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="date">Feb 26</div>
+          <div class="event">Ryan responds saying he's talking to the VA. Austin asks "Who is my point of contact? Nothing's working."</div>
+        </div>
+        <div class="timeline-item">
+          <div class="date">Feb 27</div>
+          <div class="event">Austin: "Is everything just being ran by VAs? This is a nightmare. I'm contacting my lawyer."</div>
+        </div>
+        <div class="timeline-item">
+          <div class="date">Mar 2</div>
+          <div class="event">5+ emails in 30 minutes. Lawyer threats. Bank chargeback threats. "2 weeks of being left in the dark." Refund processed.</div>
+        </div>
+      </div>
+
+      <div class="email-quote">
+        <div class="from">Austin Schroeder &lt;austin.s@roofsbyrecon.com&gt;</div>
+        <div class="subject">Subject: Re: Question | Mar 2, 2026 8:13 AM</div>
+        <blockquote>
+          "Our go high-level doesn't even have a payment activated on it and doesn't even work properly. <span class="highlight">The website edits have been over two weeks and are simple to do on a WordPress format.</span>"
+        </blockquote>
+      </div>
+      <div class="email-quote">
+        <div class="from">Austin Schroeder</div>
+        <div class="subject">Mar 2, 2026 8:18 AM</div>
+        <blockquote>
+          "Obviously, there is no owner of this company or something's very strange. <span class="highlight">Looks like it's being managed by a bunch of VAs</span> and you guys send edits over and wait on feedback..."
+        </blockquote>
+      </div>
+
+      <div class="evidence-grid">
+        <div class="evidence-item">
+          <div class="ev-label">Screenshot: REMCO Website (Similar quality issue)</div>
+          <img src="evidence/remco-website.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="REMCO Website">
+          <div class="evidence-placeholder" style="display:none;">Save REMCO screenshot as:<br><code>evidence/remco-website.png</code></div>
+          <div class="ev-caption">Example of VA-built website on app.stonesystems.io - representative of the quality clients are receiving.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ CASE 6: RAWLINGS HEATING / ALEJANDRA ════════ -->
+  <div class="case-card critical">
+    <div class="case-header">
+      <div class="case-number">6</div>
+      <div class="case-title">
+        <h3>Rawlings Heating - Website Revision Quality</h3>
+        <div class="meta">VA: <strong>Alejandra Duenas</strong> | ~Feb 27, 2026</div>
+      </div>
+      <div class="outcome-badge outcome-escalated">Quality Failure</div>
+    </div>
+    <div class="case-body">
+      <div class="failure-detail">
+        <div class="label">What the VA Did</div>
+        <p>Alejandra Duenas was assigned a website revision for Rawlings Heating. She placed a discount promotional image on the site under "about us" and on top of "our services." <strong>The design quality was so poor that both Ryan and Michael Vanhoutte independently called it out.</strong> When confronted, Alejandra said she just placed what the client sent. Ryan then had to design a replacement promo himself and send it to her.</p>
+      </div>
+
+      <div class="slack-quote">
+        <div class="slack-msg">
+          <div class="name">Alejandra Duenas <span>11:26 AM</span></div>
+          <div class="text">"Hey Ryan, hope you're doing well! On this revision I just see this image of the discount they offer so I added it on the website under 'about us' and on top of 'our services' so it was visible as the client requested"</div>
+        </div>
+      </div>
+      <div class="slack-quote">
+        <div class="slack-msg">
+          <div class="name">Ryan <span>1:17 PM</span></div>
+          <div class="text">"You're gonna keep it as is? I don't think they're gonna love that to be honest. That design sucks"</div>
+        </div>
+      </div>
+      <div class="slack-quote">
+        <div class="slack-msg">
+          <div class="name">Michael Vanhoutte <span>1:30 PM</span></div>
+          <div class="text">"ya thats shit. give feedback on em tho. only way they'll learn and improve"</div>
+        </div>
+      </div>
+      <div class="slack-quote">
+        <div class="slack-msg">
+          <div class="name">Alejandra Duenas <span>1:58 PM</span></div>
+          <div class="text">"Hey Ryan! This is what the client send and you asked so I just place it as required. if the aesthetic is not pleasing I suggest asking the client a banner that meet the expectations and then send it to me again and I place it again on the website."</div>
+        </div>
+      </div>
+      <div class="slack-quote">
+        <div class="slack-msg">
+          <div class="name">Michael Vanhoutte <span>2:52 PM</span></div>
+          <div class="text">"make sure to give feedback not criticism, i know we dancing around feelings here and it's shit but you know what i'm saying"</div>
+        </div>
+      </div>
+
+      <div class="impact-detail">
+        <div class="label">The Pattern This Reveals</div>
+        <p>Alejandra placed a low-quality image on the site without any design judgment or QA. When called out, her response was essentially "that's what you gave me." <strong>No proactive communication that the asset quality was poor. No suggestion to the CSM before publishing. Just placed it and moved on.</strong> This is the exact behavior Kai Stone called out in the March 18 meeting: VAs need to proof-check their work before saying it's done.</p>
+      </div>
+
+      <div class="evidence-grid">
+        <div class="evidence-item">
+          <div class="ev-label">Screenshot: Slack DM - Alejandra's Work</div>
+          <img src="evidence/rawlings-slack-alejandra.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Slack DM with Alejandra">
+          <div class="evidence-placeholder" style="display:none;">Save Slack screenshot as:<br><code>evidence/rawlings-slack-alejandra.png</code></div>
+          <div class="ev-caption">Slack DM showing Alejandra's website revision for Rawlings Heating - the poor quality promo placement.</div>
+        </div>
+        <div class="evidence-item">
+          <div class="ev-label">Screenshot: Michael's Reaction</div>
+          <img src="evidence/rawlings-michael-reaction.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" alt="Michael Vanhoutte Slack">
+          <div class="evidence-placeholder" style="display:none;">Save Michael's Slack reaction as:<br><code>evidence/rawlings-michael-reaction.png</code></div>
+          <div class="ev-caption">Michael Vanhoutte confirming the work quality: "ya thats shit" and advising Ryan to give feedback.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ CASE 7: RAPIDROOF ════════ -->
+  <div class="case-card critical">
+    <div class="case-header">
+      <div class="case-number">7</div>
+      <div class="case-title">
+        <h3>RapidRoof - Rebrand Task Incomplete</h3>
+        <div class="meta">VA: <strong>Unattributed</strong> (per Brian Freer's testimony) | Pre-March 2026</div>
+      </div>
+      <div class="outcome-badge outcome-lost">CSM Credibility Lost</div>
+    </div>
+    <div class="case-body">
+      <div class="failure-detail">
+        <div class="label">What the VA Did</div>
+        <p>Client requested a full company rebrand on their website. The VA marked the task as "Done." However, <strong>only the header logo and name were changed</strong>. The old company name "RapidRoof" was still displayed throughout the entire website - in scripts, body text, and all internal references. A basic visual QA would have caught this instantly.</p>
+      </div>
+      <div class="meeting-quote">
+        <div class="source">March 18 CSM-VA Meeting - Fathom Transcript @49:03</div>
+        <p><span class="speaker">Brian Freer (CSM):</span> "Like that RapidRoof one, it isn't done, it still references RapidRoof all throughout the website, it just changed the name and the logo, so all of the script still shows it. So like when it says that it's done, but if I... you check it off as done, I'm not going to know that you just looked at it and said, Oh, I think it's completed. So then when I go and tell the client, I'm not going to have accurate information."</p>
+      </div>
+      <div class="impact-detail">
+        <div class="label">Client Impact</div>
+        <p>Brian told the client the rebrand was complete based on the VA's "Done" status. Client saw the old name everywhere. <strong>Brian's credibility with the client was destroyed</strong> because he trusted the VA's work status.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ CASE 8: ANDRES BLOCKED LAUNCHES ════════ -->
+  <div class="case-card warning">
+    <div class="case-header">
+      <div class="case-number">8</div>
+      <div class="case-title">
+        <h3>Two Blocked Launch Calls - Andres Lopez's Clients</h3>
+        <div class="meta">VA: <strong>Unattributed</strong> (website builders) | Feb 20, 2026</div>
+      </div>
+      <div class="outcome-badge outcome-escalated">Launches Blocked</div>
+    </div>
+    <div class="case-body">
+      <div class="failure-detail">
+        <div class="label">What the VA Did</div>
+        <p>Two client launch calls had to be cancelled on the same day because the websites were either not built or not ready. VAs had the tasks assigned but the work wasn't done by the launch date. Andres couldn't hold the calls. Clients waiting. Revenue at risk from day one.</p>
+      </div>
+      <div class="meeting-quote">
+        <div class="source">Fathom Recap: Andres 1-1 Meeting - Feb 20, 2026</div>
+        <p><span class="speaker">Summary:</span> "Andres's Launch Calls Blocked: Two client launch calls were blocked today because their websites were either not built or not ready."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ CASE 9: CASTLE CONSTRUCTION ════════ -->
+  <div class="case-card critical">
+    <div class="case-header">
+      <div class="case-number">9</div>
+      <div class="case-title">
+        <h3>Castle Construction - Robert Morris</h3>
+        <div class="meta">VA: <strong>Unattributed</strong> (website builder) | Feb 10 - Feb 13, 2026</div>
+      </div>
+      <div class="outcome-badge outcome-lost">Client Lost</div>
+    </div>
+    <div class="case-body">
+      <div class="failure-detail">
+        <div class="label">What the VA Did</div>
+        <p>Client specifically discussed in onboarding that the website emphasis should be on <strong>termite structural repair</strong>. The VA built the site focused on the wrong services - ignoring the onboarding conversation. Then the website went completely offline during the client's busy season.</p>
+      </div>
+      <div class="email-quote">
+        <div class="from">Robert Morris &lt;robhomeadvisor@gmail.com&gt;</div>
+        <div class="subject">Subject: Unhappy :( | Feb 10, 2026</div>
+        <blockquote>
+          "I am disappointed in the website original conversation. I had discussed the emphasis to be on termite structural repair and quite honestly it..."
+        </blockquote>
+      </div>
+      <div class="email-quote">
+        <div class="from">Robert Morris</div>
+        <div class="subject">Feb 13, 2026</div>
+        <blockquote>
+          "<span class="highlight">This is my busy season. I need my website back up right now. Nothing's there.</span>"
+        </blockquote>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ CASE 10: PLACEHOLDER CONTENT ════════ -->
+  <div class="case-card warning">
+    <div class="case-header">
+      <div class="case-number">10</div>
+      <div class="case-title">
+        <h3>Multiple Clients - Placeholder Content on Live Sites</h3>
+        <div class="meta">VA: <strong>Multiple unattributed</strong> | Jan 6, 2026</div>
+      </div>
+      <div class="outcome-badge outcome-escalated">Quality Failure</div>
+    </div>
+    <div class="case-body">
+      <div class="failure-detail">
+        <div class="label">What the VAs Did</div>
+        <p>VAs were launching client websites with <strong>wrong logos, wrong Google Maps locations, generic placeholder text still on live pages.</strong> These are live business websites visible to the client's actual customers.</p>
+      </div>
+      <div class="meeting-quote">
+        <div class="source">Fathom Recap: Charlie 1-1 Meeting - Jan 6, 2026</div>
+        <p><span class="speaker">Charlie Nyreen:</span> Reported VAs were launching websites with placeholder content - wrong logos, wrong maps, basic errors that a visual check would catch.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ CASE 11: DFW PRECISE REMODEL ════════ -->
+  <div class="case-card critical">
+    <div class="case-header">
+      <div class="case-number">11</div>
+      <div class="case-title">
+        <h3>DFW Precise Remodel - David Phillips</h3>
+        <div class="meta">VA: <strong>Unattributed</strong> | Dec 31, 2025 - Jan 5, 2026</div>
+      </div>
+      <div class="outcome-badge outcome-escalated">Escalated</div>
+    </div>
+    <div class="case-body">
+      <div class="failure-detail">
+        <div class="label">What the VA Did</div>
+        <p>Website was built <strong>nothing like what was discussed during onboarding</strong>. Revisions were slow. After multiple rounds of changes it still wasn't right. Client's email subject: "Unhappy with service thus far !!!!!"</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ CASE 12: KDP PLUMBING ════════ -->
+  <div class="case-card critical">
+    <div class="case-header">
+      <div class="case-number">12</div>
+      <div class="case-title">
+        <h3>KDP Plumbing - Kurtis Platt</h3>
+        <div class="meta">VA: <strong>Unattributed</strong> | Dec 30, 2025 - Jan 2026</div>
+      </div>
+      <div class="outcome-badge outcome-lost">Client Lost</div>
+    </div>
+    <div class="case-body">
+      <div class="failure-detail">
+        <div class="label">What the VA Did</div>
+        <p>Client sent 10 photos on December 30 for a project page on the website. <strong>The VA never uploaded them.</strong> Client followed up multiple times. Photos still not on the site. Additionally, the old website was still appearing in Google search results - the domain redirect was not handled properly by the VA.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ CASE 13: ASPIRE HOMES ════════ -->
+  <div class="case-card critical">
+    <div class="case-header">
+      <div class="case-number">13</div>
+      <div class="case-title">
+        <h3>Aspire Homes - Trino</h3>
+        <div class="meta">VA: <strong>Unattributed</strong> | Pre-Jan 8, 2026</div>
+      </div>
+      <div class="outcome-badge outcome-lost">Client Lost</div>
+    </div>
+    <div class="case-body">
+      <div class="failure-detail">
+        <div class="label">What the VA Did</div>
+        <p>Persistent service delivery failures from day one. Client wrote a formal cancellation letter citing "serious issues from the very beginning." The formality of the letter is unusual - this indicates repeated, compounding failures.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ CASE 14: LYNQ ROOFING ════════ -->
+  <div class="case-card critical">
+    <div class="case-header">
+      <div class="case-number">14</div>
+      <div class="case-title">
+        <h3>LYNQ Roofing - Complete Site Rejection</h3>
+        <div class="meta">VA: <strong>Unattributed</strong> | Pre-Dec 10, 2025</div>
+      </div>
+      <div class="outcome-badge outcome-lost">Client Lost</div>
+    </div>
+    <div class="case-body">
+      <div class="failure-detail">
+        <div class="label">What the VA Did</div>
+        <p>The website quality was so far below the client's expectations that they <strong>switched back to their old website entirely</strong> before sending the cancellation. This isn't a case of a missed detail - the entire VA-built site was rejected.</p>
+      </div>
+      <div class="email-quote">
+        <div class="from">LYNQ Roofing &lt;lynqroofing@gmail.com&gt;</div>
+        <div class="subject">Subject: LYNQ Roofing - CANCEL ACCOUNT | Dec 10, 2025</div>
+        <blockquote>
+          "Please cancel my account immediately. <span class="highlight">I've already switched my website back</span> and will be going another direction. I had very high hopes about moving to Stone Systems but unfortunately..."
+        </blockquote>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ CASE 15: SYSTEMIC - CSP BUG ════════ -->
+  <div class="case-card systemic">
+    <div class="case-header">
+      <div class="case-number">15</div>
+      <div class="case-title">
+        <h3>Systemic: CSP Photo Bug + Template Issues</h3>
+        <div class="meta">Affects: <strong>All VAs</strong> | Ongoing</div>
+      </div>
+      <div class="outcome-badge outcome-systemic">Systemic Issue</div>
+    </div>
+    <div class="case-body">
+      <div class="failure-detail">
+        <div class="label">The Platform Issues</div>
+        <p><strong>Issue 1:</strong> Photos attached to CSP tasks are NOT visible to VAs after creation. VAs receive tasks asking them to use attached photos but can't see them. This is a platform bug.<br><br>
+        <strong>Issue 2:</strong> The new website template has features that break if the client's domain isn't connected yet. Sites launch with broken review links and non-functional features.<br><br>
+        <strong>The VA accountability angle:</strong> While these are platform issues, VAs are not flagging these blockers to CSMs. They either skip the photo/feature or launch with it broken, rather than communicating the limitation.</p>
+      </div>
+      <div class="meeting-quote">
+        <div class="source">March 18 CSM-VA Meeting - Fathom Transcript @51:02</div>
+        <p><span class="speaker">Astrid Altuve (VA Lead):</span> "There are some things that actually on the new template that don't work if they don't have their domain."</p>
+      </div>
+      <div class="meeting-quote">
+        <div class="source">March 18 CSM-VA Meeting - Fathom Transcript @52:06</div>
+        <p><span class="speaker">Kai Stone (CEO):</span> "If you're a CSM, that will happen. The review link will not work if the GMB page is not connected."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ CASE 16: SYSTEMIC - REPEAT DEFECTS (NEW) ════════ -->
+  <div class="case-card systemic">
+    <div class="case-header">
+      <div class="case-number">16</div>
+      <div class="case-title">
+        <h3>Systemic: Same Defect Repeated Across Consecutive Builds <span class="new-badge">New Pattern</span></h3>
+        <div class="meta">Affects: <strong>Website build team</strong> | Ongoing as of April 2026</div>
+      </div>
+      <div class="outcome-badge outcome-systemic">Systemic Issue</div>
+    </div>
+    <div class="case-body">
+      <div class="failure-detail">
+        <div class="label">The Pattern</div>
+        <p>As of April 2, 2026, Michael Scott confirmed that <strong>3 consecutive client websites</strong> shipped with the exact same defect: Privacy Policy and Terms &amp; Conditions pages were created but never linked. This means either (a) one VA made the same mistake 3 times, or (b) multiple VAs are all missing the same step because there is no checklist item for it. Either way, there is <strong>no feedback loop</strong> catching and correcting the behavior between builds. Combined with the J Kern GBP case and Precision Carpentry readability issue from the same week, the evidence shows that the problems documented in this report from December 2025 through March 2026 are still actively occurring.</p>
+      </div>
+      <div class="impact-detail">
+        <div class="label">Why This Matters</div>
+        <p>The March 18 meeting happened. Kai Stone told VAs to proof-check their work. Astrid acknowledged premature task closure. <strong>Two weeks later, the same patterns are still happening.</strong> Verbal direction in a meeting is not changing behavior. Process changes (checklists, QA gates, KPI restructuring) are required.</p>
+      </div>
+    </div>
+  </div>
+
+</div> <!-- end cases section -->
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- ═══════════ MARCH 18 MEETING EVIDENCE ═════════ -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="icon" style="background: rgba(170,68,255,0.15); color: #aa44ff;">M</div>
+    <h2>March 18 Meeting - VA Admissions on Record</h2>
+    <p>Fathom Transcript: "Impromptu Zoom Meeting"</p>
+  </div>
+  <p style="font-size:0.9rem; color:#888; margin-bottom:20px;">On March 18, 2026, Michael Vanhoutte held a meeting between the CSM team and VA team to address the communication and quality breakdown. The following statements were made by VAs and leadership, on record:</p>
+
+  <table class="meeting-table">
+    <thead>
+      <tr>
+        <th style="width:90px;">Time</th>
+        <th style="width:160px;">Speaker</th>
+        <th>Statement (Paraphrased)</th>
+        <th style="width:250px;">What This Proves</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>@35:14</td>
+        <td><strong>Astrid Altuve</strong><br><em>VA Lead</em></td>
+        <td>Acknowledged VAs sometimes mark tasks as completed when they shouldn't. Admitted CSMs have had to re-request work already marked "done."</td>
+        <td>VA leadership confirms premature task closure is a known pattern.</td>
+      </tr>
+      <tr>
+        <td>@42:59</td>
+        <td><strong>Oriana</strong><br><em>VA</em></td>
+        <td>VAs feel pressured to hit daily KPI targets. Tasks get closed to maintain metrics even when the work isn't fully done.</td>
+        <td>KPI structure may be incentivizing quantity over quality. VAs closing tasks to hit numbers.</td>
+      </tr>
+      <tr>
+        <td>@46:59</td>
+        <td><strong>Alejandra Duenas</strong><br><em>VA</em></td>
+        <td>Admitted logo quality is often poor. They use AI tools that produce bad results. When they tell CSMs the logo is bad, action doesn't follow.</td>
+        <td>VAs are aware of quality issues but proceed anyway rather than blocking the task.</td>
+      </tr>
+      <tr>
+        <td>@49:03</td>
+        <td><strong>Brian Freer</strong><br><em>CSM</em></td>
+        <td>RapidRoof rebrand was marked "Done" but old company name was still throughout the entire site. Only header was changed.</td>
+        <td>Direct evidence: task closed without completion. Basic QA would have caught it.</td>
+      </tr>
+      <tr>
+        <td>@50:00</td>
+        <td><strong>Kai Stone</strong><br><em>CEO</em></td>
+        <td>"VAs, you guys have to proof check the website. Once you say it's done, you have to go in and check that photos are right, wording is right."</td>
+        <td><strong>CEO explicitly stated visual QA is the VA's responsibility.</strong></td>
+      </tr>
+      <tr>
+        <td>@50:00</td>
+        <td><strong>Kai Stone</strong><br><em>CEO</em></td>
+        <td>"CSMs, you guys need to be way, way better about the description of your tasks... I have seen some of you guys' descriptions of your tasks are absolutely [unusable]."</td>
+        <td>CEO acknowledges both sides need improvement, but the QA mandate is clear.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- ═══════════ FAILURE PATTERN SUMMARY ════════════ -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="icon" style="background: rgba(255,136,0,0.15); color: #ff8800;">P</div>
+    <h2>Failure Patterns Identified</h2>
+  </div>
+
+  <div class="rec-card">
+    <div class="rec-priority rec-p1">Pattern 1</div>
+    <div class="rec-content">
+      <h4>Tasks Marked "Done" Without Completion</h4>
+      <p>VAs close tasks at 100% when the work is not finished. Cases: Cross Country Mechanical (Camila), RapidRoof, Aspire Homes, <strong>J Kern Construction GBP (new, Apr 1)</strong>. Oriana admitted in the March 18 meeting this happens due to KPI pressure.</p>
+    </div>
+  </div>
+  <div class="rec-card">
+    <div class="rec-priority rec-p1">Pattern 2</div>
+    <div class="rec-content">
+      <h4>No Visual QA Before Marking Done</h4>
+      <p>Websites go live with wrong logos, placeholder content, old business names, broken layouts, <strong>unreadable text (Precision Carpentry, new)</strong>. Cases: RapidRoof, placeholder content (Charlie's report), Rawlings Heating (Alejandra), Precision Carpentry. Kai Stone explicitly made this the VA's responsibility.</p>
+    </div>
+  </div>
+  <div class="rec-card">
+    <div class="rec-priority rec-p1">Pattern 3</div>
+    <div class="rec-content">
+      <h4>Websites Built Ignoring Client Specs</h4>
+      <p>VA builds the site with wrong service emphasis, wrong content focus, or generic layout rather than what the client discussed in onboarding. Cases: Castle Construction, DFW Precise Remodel, LYNQ Roofing.</p>
+    </div>
+  </div>
+  <div class="rec-card">
+    <div class="rec-priority rec-p2">Pattern 4</div>
+    <div class="rec-content">
+      <h4>Assets Not Uploaded / Work Never Started</h4>
+      <p>Client sends photos, VA never uploads them. Tasks assigned but no action taken for weeks. Cases: KDP Plumbing (10 photos), Roofs by Recon (2+ week delay), Andres's blocked launches.</p>
+    </div>
+  </div>
+  <div class="rec-card">
+    <div class="rec-priority rec-p2">Pattern 5</div>
+    <div class="rec-content">
+      <h4>VA Handoffs Die Silently</h4>
+      <p>One VA escalates to another, the receiving VA never picks it up, nobody follows up. Case: Cross Country Mechanical (Camila to Oriana).</p>
+    </div>
+  </div>
+  <div class="rec-card">
+    <div class="rec-priority rec-p2">Pattern 6</div>
+    <div class="rec-content">
+      <h4>Blockers Not Communicated</h4>
+      <p>VAs encounter technical issues (CSP photo bug, template domain dependency) but don't flag them. They either skip the work or launch with it broken. Only raised when forced in a group meeting.</p>
+    </div>
+  </div>
+  <div class="rec-card">
+    <div class="rec-priority rec-p1">Pattern 7</div>
+    <div class="rec-content">
+      <h4>Same Defect Repeated Across Consecutive Builds <span class="new-badge">New</span></h4>
+      <p>Identical mistakes ship on multiple consecutive sites with no correction. <strong>3 straight websites with broken Privacy Policy/Terms links (Home Suite Inc + 2 others, Apr 2).</strong> No feedback loop exists between builds. VAs are not learning from previous errors or reviewing peer work. This pattern is the strongest evidence that verbal direction alone (March 18 meeting) is insufficient - structural process changes are required.</p>
     </div>
   </div>
 </div>
 
-<section id="admissions">
-  <div class="tag" data-motion>Admissions</div>
-  <div class="sec-title" data-motion>VAs acknowledged the failures on record.</div>
-  <div class="quote-block" data-motion>
-    <div class="quote-source">Alejandra Duenas / VA</div>
-    <div class="quote-text">"This is what the client send and you aked so I just place it as required. if the aesthetic is not pleasing I sugest asking the client a banner that meet the expectations."</div>
-    <div class="quote-meta">Slack DM to Ryan Grant, re: Rawlings Heating website revision. No QA performed before placing content on live site.</div>
-  </div>
-  <div class="quote-block" data-motion>
-    <div class="quote-source">Astrid Altuve / VA Lead</div>
-    <div class="quote-text">Admitted that VAs mark tasks done prematurely. Acknowledged the systemic issue with task closure before completion.</div>
-    <div class="quote-meta">March 18, 2026, Impromptu Zoom Meeting (Fathom transcript, 30 pages)</div>
-  </div>
-  <div class="quote-block" data-motion>
-    <div class="quote-source">Oriana / VA</div>
-    <div class="quote-text">Stated that KPI pressure causes premature task closure. VAs are incentivized to close tasks quickly, not correctly.</div>
-    <div class="quote-meta">March 18, 2026, Impromptu Zoom Meeting (Fathom transcript)</div>
-  </div>
-  <div class="quote-block" data-motion>
-    <div class="quote-source">Camila Salamanca / VA</div>
-    <div class="quote-text">"@Ryan Christmas the task is done."</div>
-    <div class="quote-meta">CS Platform task note, Cross Country Mechanical. Task: "Please update the logo." Logo was never updated. Two months later she asked Oriana to fix it.</div>
-  </div>
-  <div class="quote-block" data-motion>
-    <div class="quote-source">Alejandra Duenas / VA</div>
-    <div class="quote-text">Admitted logo quality is poor. Acknowledged that AI tools are used for design work, explaining the low quality output.</div>
-    <div class="quote-meta">March 18, 2026, Impromptu Zoom Meeting (Fathom transcript)</div>
-  </div>
-</section>
-
-<section id="evidence">
-  <div class="tag" data-motion>Evidence</div>
-  <div class="sec-title" data-motion>Screenshots from CS Platform, Gmail, and Slack.</div>
-
-  <div class="evidence-full" data-motion>
-    <img src="evidence/cross-country-csp-task.png" alt="CS Platform: Cross Country task marked Done at 100% - logo never fixed">
-    <div class="cap">
-      <h4>Cross Country Mechanical: CS Platform Task View</h4>
-      <p>Task: "Please update the logo." Assignee: Camila Salamanca. Status: Done. Progress: 100%. The logo was never updated. Camila closed the task, then 2 months later asked Oriana to fix it. Oriana never did either.</p>
-    </div>
+<!-- ════════════════════════════════════════════════ -->
+<!-- ═══════════ RECOMMENDATIONS ═══════════════════ -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-header">
+    <div class="icon" style="background: rgba(0,170,68,0.15); color: #00aa44;">R</div>
+    <h2>Recommended Fixes</h2>
+    <p>Prioritized by impact</p>
   </div>
 
-  <div class="evidence-full" data-motion>
-    <img src="evidence/shannon-cancel-email.png" alt="Shannon Liccion Cancel Cancel Cancel email">
-    <div class="cap">
-      <h4>Shannon Liccion: "Cancel Cancel Cancel"</h4>
-      <p>"And on top of that have ask y'all several times to change the logo on my website and still never got changed." The VA marked the logo task Done. The client cancelled.</p>
+  <div class="rec-card">
+    <div class="rec-priority rec-p1">P1</div>
+    <div class="rec-content">
+      <h4>Mandatory Visual QA Checklist Before Task Closure</h4>
+      <p>VAs must complete a checklist before any website task can be moved to "Done": logo correct, all photos uploaded, address correct, mobile view checked, all links functional (including Privacy Policy and Terms), all task items addressed. Attach desktop + mobile screenshots to the task.</p>
+      <div class="owner">Owner: Astrid Altuve / Kai Stone | Timeline: This week</div>
     </div>
   </div>
-
-  <div class="evidence-full" data-motion>
-    <img src="evidence/jon-crews-royal-contractors-photos-not-done.jpg" alt="Jon Crews email about photos never uploaded">
-    <div class="cap">
-      <h4>Royal Contractors: Photos Never Uploaded</h4>
-      <p>"We had sent emails months ago for updates to the website and they have not all been done. We had sent a ton of pictures to be used but all the main pictures are not ours."</p>
+  <div class="rec-card">
+    <div class="rec-priority rec-p1">P1</div>
+    <div class="rec-content">
+      <h4>Fix CSP Task Photo Attachment Bug</h4>
+      <p>Photos attached to tasks are invisible to VAs. This is causing work to be skipped or done wrong. Interim fix: all assets go in client Google Drive folder. Long-term: fix the platform bug.</p>
+      <div class="owner">Owner: Michael Vanhoutte / Umar | Timeline: This week (workaround), 2 weeks (fix)</div>
     </div>
   </div>
-
-  <div class="evidence-full" data-motion>
-    <img src="evidence/rawlings-slack-va.png" alt="Slack DM showing Alejandra Duenas placing ugly design without QA">
-    <div class="cap">
-      <h4>Rawlings Heating: VA Slack Conversation</h4>
-      <p>Alejandra Duenas placed a promo banner on the live site without checking quality. When confronted, she deflected: "I just place it as required." Ryan had to redesign it himself.</p>
+  <div class="rec-card">
+    <div class="rec-priority rec-p1">P1</div>
+    <div class="rec-content">
+      <h4>Review VA KPI Structure</h4>
+      <p>If VAs are incentivized to close tasks quickly over doing them correctly, the metrics are driving the wrong behavior. Add a "reopened task" or "revision requested" metric that penalizes premature closure.</p>
+      <div class="owner">Owner: Astrid Altuve / Michael Vanhoutte | Timeline: 2 weeks</div>
     </div>
   </div>
-
-  <div class="evidence-full" data-motion>
-    <img src="evidence/slack-charlie-launch-not-ready.jpg" alt="Charlie Nyreen reporting websites not ready for launch calls due to VA delays">
-    <div class="cap">
-      <h4>CSM Channel: Websites Not Ready for Launch Calls</h4>
-      <p>Charlie Nyreen: "I have been having to reschedule my launch calls, because the website's are not ready... in most circumstances it's because the VA hasn't completed the webpage on time." Eric Shirk confirmed: "it has been more recurring over the last few months."</p>
+  <div class="rec-card">
+    <div class="rec-priority rec-p1">P1</div>
+    <div class="rec-content">
+      <h4>GBP Optimization Definition of Done <span class="new-badge">New</span></h4>
+      <p>A GBP profile cannot be marked complete until: minimum 5 photos uploaded, business hours set, services listed, at least 1 Google post published, business description written, and all categories configured. The J Kern case proves VAs are closing GBP tasks with bare-minimum profiles.</p>
+      <div class="owner">Owner: Astrid Altuve / Ryan Grant | Timeline: 1 week</div>
     </div>
   </div>
-
-  <div class="evidence-full" data-motion>
-    <img src="evidence/slack-va-task-not-completed.jpg" alt="Multiple Slack messages about VA tasks not being completed">
-    <div class="cap">
-      <h4>Slack: VA Tasks Not Completed, Platform Auto-Marking Done</h4>
-      <p>Astrid Altuve (VA Lead): "Everytime I mark the first or second box when doing a website it marks it as complete." The platform auto-completes tasks when VAs check boxes, enabling false "Done" status without actual completion.</p>
+  <div class="rec-card">
+    <div class="rec-priority rec-p2">P2</div>
+    <div class="rec-content">
+      <h4>Add "Blocked" Task Status in CSP</h4>
+      <p>VAs must move tasks to "Blocked" (with reason) instead of leaving them in limbo or closing them incomplete. Blocked tasks trigger a notification to the CSM. Prevents silent handoff deaths.</p>
+      <div class="owner">Owner: Michael Vanhoutte (platform) | Timeline: 2 weeks</div>
     </div>
   </div>
-
-  <div class="evidence-full" data-motion>
-    <img src="evidence/slack-wrong-logo-every-page.jpg" alt="Eric Shirk reporting wrong logo used on every page of client website">
-    <div class="cap">
-      <h4>Slack: Wrong Logo on Every Page</h4>
-      <p>Eric Shirk on Icon Roofing: "The wrong logo is used on every page but the home page. All of the service area pages link to the same page... The reviews are not linked to the website. I could go on, but I..." Direct evidence of VA visual QA failure.</p>
+  <div class="rec-card">
+    <div class="rec-priority rec-p2">P2</div>
+    <div class="rec-content">
+      <h4>Pre-Launch Checklist for All Websites</h4>
+      <p>Before any website can be marked live: domain connected, review link works, GBP linked, forms functional, Privacy Policy and Terms links verified, all pages load, mobile responsive, text readable on all backgrounds. VA cannot close website task until checklist is complete.</p>
+      <div class="owner">Owner: Astrid Altuve | Timeline: 1 week</div>
     </div>
   </div>
-
-  <div class="evidence-full" data-motion>
-    <img src="evidence/slack-marked-done-not-finished.jpg" alt="Ryan reporting to Eric that tasks were marked done but not actually finished">
-    <div class="cap">
-      <h4>Slack: "Marked as Done But Were Not Actually Finished"</h4>
-      <p>Ryan to Eric Shirk: "Charlie is about to get on a call with this client and found that several items were marked as done but were not actually finished. He also has no notes from Astrid explaining what was completed." This is the core pattern: VAs closing tasks without completing the work.</p>
+  <div class="rec-card">
+    <div class="rec-priority rec-p2">P2</div>
+    <div class="rec-content">
+      <h4>VA Handoff Accountability</h4>
+      <p>When a VA reassigns or escalates a task, the original VA remains accountable until the receiving VA confirms pickup. No more Camila-to-Oriana situations where work dies in the gap.</p>
+      <div class="owner">Owner: Astrid Altuve / Michael (platform) | Timeline: 2 weeks</div>
     </div>
   </div>
-
-  <div class="evidence-full" data-motion>
-    <img src="evidence/slack-website-looks-terrible.jpg" alt="Multiple Slack messages about VA website quality being terrible">
-    <div class="cap">
-      <h4>Slack: Website Quality Complaints</h4>
-      <p>Maria Valladares: "I truly had to restrain myself from pointing out how shitty his pixelated website looks." Eric Shirk on Idaho Roofing: "his old website is still connected to his GMB Profile." Multiple CSMs flagging VA website build quality.</p>
+  <div class="rec-card">
+    <div class="rec-priority rec-p3">P3</div>
+    <div class="rec-content">
+      <h4>Weekly Spot-Check Audit</h4>
+      <p>CSM Team Lead reviews 5 randomly selected "completed" website tasks per week. Report findings to Astrid. Creates an accountability feedback loop.</p>
+      <div class="owner">Owner: Ryan Grant + Astrid Altuve | Timeline: Ongoing weekly</div>
     </div>
   </div>
-
-  <div class="evidence-full" data-motion>
-    <img src="evidence/slack-rebrand-old-name-still-showing.jpg" alt="Multiple cases of old website or old company name still showing after VA work">
-    <div class="cap">
-      <h4>Slack: Old Websites and Names Still Showing After VA Work</h4>
-      <p>Brian Freer: "I'm still pulling his old website even though I've erased everything." Charlie Nyreen: "there is no website present. She is certain she created the webpage... This is kinda Urgent as I need Oriana to create the web..." VA work disappearing or never completing.</p>
-    </div>
-  </div>
-
-  <div class="evidence-full" data-motion>
-    <img src="evidence/slack-who-pissed-off-vas-thread.jpg" alt="Ryan asks who pissed off VAs, Astrid deflects blame to CSMs, Brian says VAs send smiley faces">
-    <div class="cap">
-      <h4>Slack: VA Lead Deflects, CSMs Get Smiley Faces</h4>
-      <p>Ryan: "who pissed off the VA's?!" Astrid Altuve responds by accusing CSMs of "rude interactions" and defending 24-hour turnaround. Brian Freer: "I've been getting smiley faces in my slack comms with them." VAs sending emojis instead of doing the work.</p>
-    </div>
-  </div>
-
-  <div class="evidence-full" data-motion>
-    <img src="evidence/slack-astrid-cant-find-typo.jpg" alt="Astrid says VA cannot find obvious typo, asks CSM to get screenshot from client">
-    <div class="cap">
-      <h4>Slack: VA Can't Find Obvious Typo</h4>
-      <p>Astrid Altuve: "For this part of the task we cannot find any typo please ask client for screenshot." The typo was in the automated SMS. VA couldn't find it. Deflected to CSM to get proof from the client.</p>
-    </div>
-  </div>
-
-  <div class="evidence-full" data-motion>
-    <img src="evidence/sms-typo-anything-in-can.png" alt="Automated SMS with obvious typo: Anything in can answer instead of Anything I can answer">
-    <div class="cap">
-      <h4>The Actual Typo the VA "Couldn't Find"</h4>
-      <p>"Anything in can answer in the meantime?" - should read "Anything I can answer." An obvious typo in the automated SMS going out to every client who submits a quote form. The VA team said they couldn't find it. This was brought up in the March 18 meeting.</p>
-    </div>
-  </div>
-
-
-  <div class="evidence-full" data-motion>
-    <img src="evidence/slack-charlie-vs-astrid-task.png" alt="Charlie Nyreen pushes back on Astrid about VA task quality">
-    <div class="cap">
-      <h4>Slack: CSM Pushes Back on VA Lead About Task Quality</h4>
-      <p>Charlie: "have the VA ask these questions or on the ticket." Astrid: "some things cannot be done exactly as requested." Charlie: "I don't see that the task is incorrect Astrid." Charlie: "that is part of the feedback that the VA can provide to my understanding, a better line of communication. We are peers at the end of the day." CSM has to fight for basic accountability.</p>
-    </div>
-  </div>
-
-  <div class="evidence-full" data-motion>
-    <img src="evidence/slack-astrid-deflects-blame.jpg" alt="Astrid Altuve deflecting VA quality issues and blaming CSM interactions">
-    <div class="cap">
-      <h4>Slack: VA Lead Deflects Quality Feedback</h4>
-      <p>Astrid Altuve to Ryan: "I've received feedback from the VA team about some interactions with members of your team that came across as rude." Instead of addressing VA quality issues, the VA Lead redirects the conversation to CSM communication style. Also: "templates sometimes don't load properly due to automation errors" - acknowledging known platform issues VAs don't report.</p>
-    </div>
-  </div>
-</section>
-
-<section id="patterns">
-  <div class="tag" data-motion>Patterns</div>
-  <div class="sec-title" data-motion>Six systemic failures identified.</div>
-  <div class="patterns stagger">
-    <div class="pattern" data-motion>
-      <div class="pattern-num">01</div>
-      <h3>Tasks marked "Done" without completion</h3>
-      <p>VAs close tasks at 100% to meet KPI targets without completing work. Astrid (VA Lead) and Oriana confirmed on-record, March 18.</p>
-    </div>
-    <div class="pattern" data-motion>
-      <div class="pattern-num">02</div>
-      <h3>No visual QA before marking done</h3>
-      <p>Wrong logos, placeholder content, old names go live. CEO Kai Stone told VAs: "you have to proof check the website."</p>
-    </div>
-    <div class="pattern" data-motion>
-      <div class="pattern-num">03</div>
-      <h3>Sites built ignoring client specs</h3>
-      <p>Wrong service emphasis, wrong locations, content that doesn't match onboarding discussions.</p>
-    </div>
-    <div class="pattern" data-motion>
-      <div class="pattern-num">04</div>
-      <h3>Assets not uploaded, work never started</h3>
-      <p>Client photos sit for months. Wrong stock images remain on live sites.</p>
-    </div>
-    <div class="pattern" data-motion>
-      <div class="pattern-num">05</div>
-      <h3>VA handoffs die silently</h3>
-      <p>Camila to Oriana on Cross Country: marked Done, passed it, nobody finished it. Client lost.</p>
-    </div>
-    <div class="pattern" data-motion>
-      <div class="pattern-num">06</div>
-      <h3>Technical blockers not communicated</h3>
-      <p>VAs hit bugs but don't report them. They skip work silently or mark it done.</p>
-    </div>
-  </div>
-</section>
-
-<section id="cases">
-  <div class="tag" data-motion>Cases</div>
-  <div class="sec-title" data-motion>Twelve documented failures, seven clients lost.</div>
-
-  <div class="case" data-motion>
-    <div class="case-left">
-      <div class="case-name">Cross Country Mechanical</div>
-      <span class="case-badge badge-lost">Client Lost</span>
-      <div class="case-meta"><strong>VA:</strong> Camila Salamanca, then Oriana Quinones<br><strong>Client:</strong> Shannon Liccion</div>
-    </div>
-    <div class="case-right">
-      <p>Ryan created a Website Revision task: "Please update the logo" and "Fix the Business Address (Very Important)." Camila marked it Done at 100%: "@Ryan Christmas the task is done." The logo was never fixed.</p>
-      <p>Two months later, Camila wrote "@Oriana Quinones the logo please. it still needs to be updated." Oriana never completed it either.</p>
-      <div class="inline-quote">
-        <p>"As I said and sent last month and you still took money out I want to cancel with y'all... And on top of that have ask y'all several times to change the logo on my website and still never got changed."</p>
-        <span class="iq-src">Shannon Liccion, "Cancel Cancel Cancel" email, March 23, 2026</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="case" data-motion>
-    <div class="case-left">
-      <div class="case-name">Rawlings Heating</div>
-      <span class="case-badge badge-esc">Quality Failure</span>
-      <div class="case-meta"><strong>VA:</strong> Alejandra Duenas</div>
-    </div>
-    <div class="case-right">
-      <p>Alejandra placed an ugly promo banner without QA. Ryan: "That design sucks." Her response: "This is what the client send and you aked so I just place it as required."</p>
-      <p>Zero ownership. Ryan had to personally redesign the banner. Michael confirmed: "ya thats shit."</p>
-      <div class="inline-quote">
-        <p>"I just place it as required. if the aesthetic is not pleasing I sugest asking the client a banner that meet the expectations."</p>
-        <span class="iq-src">Alejandra Duenas, VA, Slack DM</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="case" data-motion>
-    <div class="case-left">
-      <div class="case-name">RapidRoof</div>
-      <span class="case-badge badge-esc">Incomplete Rebrand</span>
-      <div class="case-meta"><strong>Witness:</strong> Brian Freer, March 18 meeting</div>
-    </div>
-    <div class="case-right">
-      <p>Client rebranded. VA tasked with updating site. Rebrand marked Done. Old company name still throughout the entire website. Brian Freer testified on record.</p>
-    </div>
-  </div>
-
-  <div class="case" data-motion>
-    <div class="case-left">
-      <div class="case-name">Royal Contractors</div>
-      <span class="case-badge badge-esc">Escalated</span>
-      <div class="case-meta"><strong>Client:</strong> Jon Crews<br><strong>Date:</strong> March 20, 2026</div>
-    </div>
-    <div class="case-right">
-      <div class="inline-quote">
-        <p>"We had sent emails months ago for updates to the website and they have not all been done. We had sent a ton of pictures to be used but all the main pictures are not ours and the pictures don't match the products."</p>
-        <span class="iq-src">Jon Crews, Royal Contractors North Florida, Gmail</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="case" data-motion>
-    <div class="case-left">
-      <div class="case-name">Roofs by Recon</div>
-      <span class="case-badge badge-lost">Client Lost</span>
-      <div class="case-meta"><strong>Client:</strong> Austin Schroeder</div>
-    </div>
-    <div class="case-right">
-      <p>Simple edits took 2+ weeks. Frustration escalated from polite requests to threatening legal action. 20+ message email thread. Client lost to VA inaction.</p>
-    </div>
-  </div>
-
-  <div class="case" data-motion>
-    <div class="case-left">
-      <div class="case-name">LYNQ Roofing</div>
-      <span class="case-badge badge-lost">Client Lost</span>
-    </div>
-    <div class="case-right">
-      <p>VA-built website so poor the client rejected it entirely and reverted to their old site. Didn't ask for revisions. Abandoned the entire output.</p>
-    </div>
-  </div>
-
-  <div class="case" data-motion>
-    <div class="case-left">
-      <div class="case-name">Castle Construction</div>
-      <span class="case-badge badge-lost">Client Lost</span>
-      <div class="case-meta"><strong>Client:</strong> Robert Morris</div>
-    </div>
-    <div class="case-right">
-      <p>Wrong service emphasis, didn't match onboarding. Then site went offline. Double failure: wrong content AND no uptime.</p>
-    </div>
-  </div>
-
-  <div class="case" data-motion>
-    <div class="case-left">
-      <div class="case-name">KDP Plumbing</div>
-      <span class="case-badge badge-lost">Client Lost</span>
-      <div class="case-meta"><strong>Client:</strong> Kurtis Platt</div>
-    </div>
-    <div class="case-right">
-      <p>10 client photos never uploaded. Photos sat in Drive untouched. Client paid for their imagery and got stock photos. Client lost.</p>
-    </div>
-  </div>
-
-  <div class="case" data-motion>
-    <div class="case-left">
-      <div class="case-name">DFW Precise Remodel</div>
-      <span class="case-badge badge-esc">Escalated</span>
-      <div class="case-meta"><strong>Client:</strong> David Phillips</div>
-    </div>
-    <div class="case-right">
-      <p>Website looked nothing like onboarding discussion. Service descriptions, layout, emphasis all wrong. Required full rebuild.</p>
-    </div>
-  </div>
-
-  <div class="case" data-motion>
-    <div class="case-left">
-      <div class="case-name">Aspire Homes</div>
-      <span class="case-badge badge-lost">Client Lost</span>
-      <div class="case-meta"><strong>Client:</strong> Trino</div>
-    </div>
-    <div class="case-right">
-      <p>Formal cancellation citing issues from day one. Problems flagged early, never resolved.</p>
-    </div>
-  </div>
-
-  <div class="case" data-motion>
-    <div class="case-left">
-      <div class="case-name">Blocked Launches</div>
-      <span class="case-badge badge-sys">Systemic</span>
-      <div class="case-meta"><strong>CSM:</strong> Andres Lopez<br><strong>Date:</strong> Feb 20, 2026</div>
-    </div>
-    <div class="case-right">
-      <p>Two launch calls cancelled because websites weren't ready. Clients expected finished sites. VA work wasn't done.</p>
-    </div>
-  </div>
-
-  <div class="case" data-motion>
-    <div class="case-left">
-      <div class="case-name">Placeholder Content</div>
-      <span class="case-badge badge-sys">Systemic</span>
-      <div class="case-meta"><strong>Reporter:</strong> Charlie Nyreen<br><strong>Date:</strong> Jan 6, 2026</div>
-    </div>
-    <div class="case-right">
-      <p>VAs launching sites with Lorem ipsum, "Your Company Name Here", stock descriptions. Went live to paying clients.</p>
-    </div>
-  </div>
-</section>
-
-<section id="transcript">
-  <div class="tag" data-motion>On Record</div>
-  <div class="sec-title" data-motion>March 18: VAs admit to the failures.</div>
-  <p style="font-size:15px;color:var(--mid);line-height:1.6;margin-bottom:32px;max-width:600px" data-motion>Michael convened a joint CSM/VA meeting. Captured by Fathom AI. 30 pages of transcript.</p>
-
-  <div class="transcript-item" data-motion>
-    <div class="t-speaker va-lead">Astrid Altuve / VA Lead</div>
-    <div class="t-text">Admitted VAs mark tasks done prematurely. Acknowledged the systemic issue with task closure before completion.</div>
-  </div>
-  <div class="transcript-item" data-motion>
-    <div class="t-speaker va">Oriana / VA</div>
-    <div class="t-text">Said KPI pressure causes premature task closure. VAs incentivized to close quickly, not correctly.</div>
-  </div>
-  <div class="transcript-item" data-motion>
-    <div class="t-speaker va">Alejandra Duenas / VA</div>
-    <div class="t-text">Admitted logo quality is poor. Acknowledged using AI tools for design work.</div>
-  </div>
-  <div class="transcript-item" data-motion>
-    <div class="t-speaker csm">Brian Freer / CSM</div>
-    <div class="t-text">RapidRoof rebrand marked Done. Old company name still throughout the entire website.</div>
-  </div>
-  <div class="transcript-item" data-motion>
-    <div class="t-speaker ceo">Kai Stone / CEO</div>
-    <div class="t-text">"You have to proof check the website." Told VAs visual QA is their responsibility.</div>
-  </div>
-</section>
-
-<section id="fixes">
-  <div class="tag" data-motion>Fixes</div>
-  <div class="sec-title" data-motion>Seven recommended changes.</div>
-
-  <div class="rec" data-motion>
-    <span class="rec-p p1">P1</span>
-    <div><h4>Mandatory visual QA checklist before task closure</h4><p>Verify logo, images, content, links. Screenshot of finished page attached to task notes.</p><div class="owner">Owner: <strong>Astrid Altuve / Kai Stone</strong></div></div>
-  </div>
-  <div class="rec" data-motion>
-    <span class="rec-p p1">P1</span>
-    <div><h4>Fix CSP task photo attachment bug</h4><p>Platform bug enables silent failures. Fix it so VAs have no excuse.</p><div class="owner">Owner: <strong>Michael Vanhoutte / Umar</strong></div></div>
-  </div>
-  <div class="rec" data-motion>
-    <span class="rec-p p1">P1</span>
-    <div><h4>Review VA KPI structure</h4><p>Current KPIs incentivize quantity over quality. Oriana confirmed on record. Restructure for quality.</p><div class="owner">Owner: <strong>Astrid Altuve / Michael Vanhoutte</strong></div></div>
-  </div>
-  <div class="rec" data-motion>
-    <span class="rec-p p2">P2</span>
-    <div><h4>Add "Blocked" task status in CSP</h4><p>VAs have no way to flag blocked tasks. They mark Done or leave open.</p><div class="owner">Owner: <strong>Michael Vanhoutte</strong></div></div>
-  </div>
-  <div class="rec" data-motion>
-    <span class="rec-p p2">P2</span>
-    <div><h4>Pre-launch checklist for all websites</h4><p>Correct logo, name, address, phone, no placeholders, all client photos uploaded.</p><div class="owner">Owner: <strong>Astrid Altuve</strong></div></div>
-  </div>
-  <div class="rec" data-motion>
-    <span class="rec-p p2">P2</span>
-    <div><h4>VA handoff accountability</h4><p>Original VA stays accountable until receiving VA confirms pickup.</p><div class="owner">Owner: <strong>Astrid Altuve / Michael Vanhoutte</strong></div></div>
-  </div>
-  <div class="rec" data-motion>
-    <span class="rec-p p3">P3</span>
-    <div><h4>Weekly spot-check audit of completed tasks</h4><p>Random sample of 5-10 "Done" tasks per week. Verify work was actually completed.</p><div class="owner">Owner: <strong>Ryan Grant + Astrid Altuve</strong></div></div>
-  </div>
-</section>
-
-<div class="footer">
-  <div><strong>Prepared by Ryan Grant</strong>, CSM Team Lead<br>At the request of Eric Shirk, Supervisor</div>
-  <div style="text-align:right">StoneSystems / March 2026<br>Confidential</div>
 </div>
 
-<script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('in-view');
-  });
-}, { threshold: 0.01, rootMargin: '200px 0px 0px 0px' });
-document.querySelectorAll('[data-motion]').forEach(el => observer.observe(el));
+</div> <!-- end container -->
 
-// Fallback: reveal everything after 1.5s in case observer doesn't fire
-setTimeout(() => {
-  document.querySelectorAll('[data-motion]').forEach(el => el.classList.add('in-view'));
-}, 1500);
+<div class="report-footer">
+  Stone Systems - VA Performance &amp; Accountability Report<br>
+  Prepared March 24, 2026 by Ryan Grant, CSM Team Lead | Updated April 2, 2026<br>
+  <span style="color:#555;">All evidence sourced from CS Platform, Gmail, Slack, and Fathom call recordings</span>
+</div>
 
-function animateCounter(el, target) {
-  let current = 0;
-  const duration = 1200;
-  const start = performance.now();
-  function update(now) {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    current = Math.round(eased * target);
-    el.textContent = current;
-    if (progress < 1) requestAnimationFrame(update);
-  }
-  requestAnimationFrame(update);
-}
-const heroObs = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      document.querySelectorAll('.hero-stat .num').forEach(el => {
-        const val = parseInt(el.textContent);
-        if (!isNaN(val)) animateCounter(el, val);
-      });
-      heroObs.disconnect();
-    }
-  });
-}, { threshold: 0.5 });
-const stats = document.querySelector('.hero-stats');
-if (stats) heroObs.observe(stats);
-</script>
 </body>
 </html>
