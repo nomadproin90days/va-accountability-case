@@ -351,10 +351,11 @@ section+section{border-top:1px solid var(--light)}
   <p class="hero-desc" data-motion>
     A documented case of systemic VA work failures directly causing client churn.
     Prepared for Michael Vanhoutte and Eric Shirk.
+    Updated April 7, 2026.
   </p>
   <div class="hero-stats stagger">
     <div class="hero-stat" data-motion>
-      <div class="num">16</div>
+      <div class="num">18</div>
       <div class="lbl">Documented cases</div>
     </div>
     <div class="hero-stat" data-motion>
@@ -362,7 +363,7 @@ section+section{border-top:1px solid var(--light)}
       <div class="lbl">Clients lost</div>
     </div>
     <div class="hero-stat" data-motion>
-      <div class="num">7</div>
+      <div class="num">8</div>
       <div class="lbl">Failure patterns</div>
     </div>
     <div class="hero-stat" data-motion>
@@ -417,6 +418,22 @@ section+section{border-top:1px solid var(--light)}
   <div class="sec-title" data-motion>Screenshots from CS Platform, Gmail, Slack, and GBP.</div>
 
   <!-- NEW EVIDENCE: April 2026 -->
+  <div class="evidence-full" data-motion>
+    <img src="evidence/underpressure-eric-pratt-4th-request.png" alt="Eric Pratt's 4th email requesting name and number change after 10 months">
+    <div class="cap">
+      <h4>Under Pressure SC: 4th Request in 10 Months <span class="new-tag">Apr 7</span></h4>
+      <p>Eric Pratt, April 7, 2026: "Can you remove any instance of Eric Pratt and change to Dan Styx and change the 843-568-5424 to 843-926-3450?" He first asked June 30, 2025. Then July 2, 2025. Then January 23, 2026. Now April 7, 2026. His personal cell number and name are still on the app and GBP after 10 months of asking.</p>
+    </div>
+  </div>
+
+  <div class="evidence-full" data-motion>
+    <img src="evidence/wolfberry-no-image-broken-links.png" alt="Wolfberry Landscaping website with placeholder image text and broken legal links">
+    <div class="cap">
+      <h4>Wolfberry Landscaping: Placeholder Image + Broken Links (4th in a Row) <span class="new-tag">Apr 7</span></h4>
+      <p>Hero section shows "Put your image" placeholder text instead of an actual image. Terms &amp; Conditions links non-functional. This is now the <strong>4th consecutive website</strong> shipped with broken legal links. The same defect Michael flagged on April 2 continues unaddressed.</p>
+    </div>
+  </div>
+
   <div class="evidence-grid" data-motion>
     <div class="evidence-card">
       <img src="evidence/homesuite-slack-michael.png" alt="Michael Scott flagging 3rd consecutive site with broken legal links">
@@ -599,7 +616,7 @@ section+section{border-top:1px solid var(--light)}
 
 <section id="patterns">
   <div class="tag" data-motion>Patterns</div>
-  <div class="sec-title" data-motion>Seven systemic failures identified.</div>
+  <div class="sec-title" data-motion>Eight systemic failures identified.</div>
   <div class="patterns stagger">
     <div class="pattern" data-motion>
       <div class="pattern-num">01</div>
@@ -634,20 +651,61 @@ section+section{border-top:1px solid var(--light)}
     <div class="pattern new-pattern" data-motion>
       <div class="pattern-num">07</div>
       <h3>Same defect repeated across consecutive builds</h3>
-      <p>3 consecutive websites shipped with identical broken legal links. No feedback loop. No learning between builds. Verbal direction from March 18 meeting did not change behavior. Process changes required.</p>
+      <p>4 consecutive websites shipped with identical broken legal links (including Wolfberry, Apr 7). No feedback loop. No learning between builds. Verbal direction from March 18 meeting and Michael's April 2 escalation did not change behavior.</p>
+    </div>
+    <div class="pattern new-pattern" data-motion>
+      <div class="pattern-num">08</div>
+      <h3>Client requests ignored across months</h3>
+      <p>Under Pressure SC asked 4 times over 10 months to swap a personal name/number for a business contact. Jun 2025, Jul 2025, Jan 2026, Apr 2026. Never completed. Simple change, repeatedly requested, never executed.</p>
     </div>
   </div>
 </section>
 
 <section id="cases">
   <div class="tag" data-motion>Cases</div>
-  <div class="sec-title" data-motion>Sixteen documented failures, eight clients lost.</div>
+  <div class="sec-title" data-motion>Eighteen documented failures, eight clients lost.</div>
 
   <!-- NEW CASES: April 2026 -->
   <div class="case" data-motion>
     <div class="case-left">
+      <div class="case-name">Under Pressure SC <span class="new-tag">Apr 7</span></div>
+      <span class="case-badge badge-esc">10 Months Ignored</span>
+      <div class="case-meta"><strong>VA:</strong> Unattributed<br><strong>Client:</strong> Eric Pratt<br><strong>Date:</strong> Jun 2025 - Apr 2026</div>
+    </div>
+    <div class="case-right">
+      <p>Client's personal cell number and name displayed on the Lead Connect App and Google Business Profile instead of the business contact. A simple find-and-replace: swap "Eric Pratt" to "Dan Styx" and one phone number to another.</p>
+      <p>He asked <strong>4 times over 10 months:</strong></p>
+      <p><strong>Jun 30, 2025:</strong> "The website now has my personal cell number on it. Can someone remove that?" Also flagged his personal number on GBP.</p>
+      <p><strong>Jul 2, 2025:</strong> "Please have your people change the auto response name from Eric to Dan."</p>
+      <p><strong>Jan 23, 2026:</strong> "Also, they never changed the name on who will respond. Can we change (Eric) to (Dan)."</p>
+      <div class="inline-quote">
+        <p>"My name and personal number are still linked to this APP. Can you remove any instance of Eric Pratt and change to Dan Styx and change the 843-568-5424 to 843-926-3450?"</p>
+        <span class="iq-src">Eric Pratt, Gmail, April 7, 2026 - his 4th request</span>
+      </div>
+      <p>Ten months. Four requests. A two-minute change. Still not done.</p>
+    </div>
+  </div>
+
+  <div class="case" data-motion>
+    <div class="case-left">
+      <div class="case-name">Wolfberry Landscaping <span class="new-tag">Apr 7</span></div>
+      <span class="case-badge badge-esc">4th Repeat</span>
+      <div class="case-meta"><strong>VA:</strong> Unattributed<br><strong>Date:</strong> April 7, 2026</div>
+    </div>
+    <div class="case-right">
+      <p>Website hero section still has "Put your image" placeholder text visible behind the review widget. No hero image was ever uploaded. Terms &amp; Conditions links non-functional, same as the previous three sites.</p>
+      <p>This is the <strong>4th consecutive website</strong> with broken legal links. Five days after Michael flagged Home Suite Inc as the "3rd straight site," the exact same defect shipped again. No checklist, no feedback loop, no correction.</p>
+      <div class="inline-quote">
+        <p>"VAs need to finish the job. Not 69% not 92%"</p>
+        <span class="iq-src">Michael Scott, Slack, April 2 - still unfixed 5 days later</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="case" data-motion>
+    <div class="case-left">
       <div class="case-name">Home Suite Inc + 2 Others <span class="new-tag">Apr 2</span></div>
-      <span class="case-badge badge-esc">3rd Repeat</span>
+      <span class="case-badge badge-esc">3rd at the time</span>
       <div class="case-meta"><strong>VA:</strong> Unattributed<br><strong>Date:</strong> April 2, 2026</div>
     </div>
     <div class="case-right">
@@ -900,7 +958,7 @@ section+section{border-top:1px solid var(--light)}
 
 <div class="footer">
   <div><strong>Prepared by Ryan Grant</strong>, CSM Team Lead<br>At the request of Eric Shirk, Supervisor</div>
-  <div style="text-align:right">StoneSystems / December 2025 - April 2026<br>Updated April 2, 2026 / Confidential</div>
+  <div style="text-align:right">StoneSystems / December 2025 - April 2026<br>Updated April 7, 2026 / Confidential</div>
 </div>
 
 <script>
